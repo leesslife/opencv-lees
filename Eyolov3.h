@@ -3,11 +3,10 @@
 #include<fstream>
 #include<sstream>
 #include<iostream>
-#include <opencv2/dnn.hpp>
-#include <opencv2/imgproc.hpp>
-#include <opencv2/highgui.hpp>
-
-
+#include<string>
+#include"opencv2/opencv.hpp"
+#include<opencv2/imgproc.hpp>
+#include<opencv2/highgui.hpp>
 using namespace cv;
 using namespace dnn;
 using namespace std;
@@ -31,5 +30,5 @@ class Eyolo{
         void yolovInit(tring vocname,string modelConfiguration,string modelWeight);
         void yolovplay();
         int yolovplayOnce(Mat inputFrame);
-}
+};
 #endif
