@@ -61,11 +61,11 @@ void Eyolo::yolovplay(){
 }
 int Eyolo::yolovplayOnce(Mat inputFrame){
     Mat blobOnce;
-    blobFromImage(frame,blobOnce,1/255.0,cvSize(inpWidth,inpHeight),Scalar(0,0,0),true,false);
-    this->net.setInput(blob);
+    blobFromImage(inputFrame,blobOnce,1/255.0,cvSize(inpWidth,inpHeight),Scalar(0,0,0),true,false);
+    this->net.setInput(blobOnce);
     vector<Mat> outs;
     this->net.forward(outs,getOutputsNames(net));
-    int fire_num=postprocss(frame,outs);
+    int fire_num=this->postprocess(inputFrame,outs);
     return fire_num;
 }
 //// Remove the bounding boxes with low confidence using non-maxima suppression
@@ -107,7 +107,7 @@ int Eyolo::postprocess(Mat& frame,const vector<Mat>& outs)
         }
     }
     vector<int> indices;
-    NMSBoxes(boxes,confidences,this->confThreshold,this->nmsThreshold,indices);
+    NMSBoxes(boxes,confidences,this->confThreshold,this->mnsThreshold,indices);
     for(size_t i=0;i<indices.size();++i)
     {
         int idx=indices[i];
