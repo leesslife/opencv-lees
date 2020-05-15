@@ -2,8 +2,8 @@
 
 Eyolo::Eyolo()
 {
-    this->confThreshold=0.5//Confidence threshold
-    this->mnsThreshold=0.4//Non-maximum suppression threshold
+    this->confThreshold=0.5;//Confidence threshold
+    this->mnsThreshold=0.4;//Non-maximum suppression threshold
     this->inpWidth=416;
     this->inpHeight=416;
     this->classesFile="coco.names";
@@ -14,8 +14,8 @@ Eyolo::~Eyolo(){}
 void Eyolo::yolovInit(string vocname,string modelConfiguration,string modelWeight)
 {
 
-    this->classesFile=vocname
-    ifstream ifs(classesFile,c_str());
+    this->classesFile=vocname;
+    ifstream ifs(classesFile.c_str());
     string line;
     while(getline(ifs,line)) this->classes.push_back(line);
     //Give the configuration and weight files for model;
@@ -35,33 +35,29 @@ void Eyolo::yolovplay(){
     }
     catch(...){
         cout<< "Could not open the input image/video stream"<<endl;
-        return 0;
     }
     static const string kWinName="Deep learning object detection in OpenCV";
-    namedWindow(kWinName,WINNDOW_NORMAL);
+    namedWindow(kWinName,WINDOW_NORMAL);
     while(waitKey(1)<0)
     {
         //get frame from the video
         cap>>frame;
         //Stop the program if reached end of video
         if(frame.empty()){
-            cout<<"Done processing!!!"<<end;
-            cout<<"Output file is stroed as"<<outputFile<<endl;
+            cout<<"Done processing!!!"<<endl;
             waitKey(3000);
             break;
         }
         blobFromImage(frame,blob,1/255.0,cvSize(inpWidth,inpHeight),Scalar(0,0,0),true,false);
         this->net.setInput(blob);
         vector<Mat> outs;
-        this->net.forward(outs,getOutputsNames(net));
-        postprocss(frame,outs);
+        this->net.forward(outs,this->getOutputsNames(net));
+        this->postprocess(frame,outs);
         Mat detectedFrame;
         frame.convertTo(detectedFrame,CV_8U);
         inshow(kWinName,frame);
     }
     cap.release();
-    if(!parser.has("image")) video.release();
-    return 0;
 }
 int Eyolo::yolovplayOnce(Mat inputFrame){
     Mat blobOnce;

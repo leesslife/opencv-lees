@@ -1,6 +1,5 @@
-LONG EhikCV::nPort=-1;
-volatile int EhikCv::gbHandling=3;
-NET_DVR_PREVIEWINFO EhikCv::struPlayInfo={0};
+#include "hikcv.h"
+
 void EhikCv::DecCBFun(long nPort, char * pBuf, long nSize, FRAME_INFO * pFrameInfo, long nReserved1, long nReserved2)
 {
     if (this->gbHandling)
@@ -45,7 +44,7 @@ void EhikCv::fRealDataCallBack(LONG lRealHandle, DWORD dwDataType, BYTE *pBuffer
             {
                 break;
             }
-            if (!PlayM4_SetDecCallBack(this->nPort, DecCBFun))
+            if (!PlayM4_SetDecCallBack(this->nPort, this->DecCBFun))
             {
                 break;
             }
@@ -100,7 +99,7 @@ void EhikCv::hikInit()
         NET_DVR_Cleanup();
         return;
     }
-    NET_DVR_SetExceptionCallBack_V30(0, NULL, g_ExceptionCallBack, NULL);
+    NET_DVR_SetExceptionCallBack_V30(0, NULL, this->g_ExceptionCallBack, NULL);
     cvNamedWindow("Mywindow", 0);
     //cvNamedWindow("IPCamera", 0);
     this->h = (HWND)cvGetWindowHandle("Mywindow");
@@ -124,7 +123,7 @@ void EhikCv::playMat(){
         return;
     }
     waitKey();
-    Sleep(-1);
+    sleep(-1);
     return;
 }
 EhikCv::EhikCv(){

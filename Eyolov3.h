@@ -24,10 +24,10 @@ class Eyolo{
     public:
         Eyolo();
         ~Eyolo();
-        int postprocess(Mat& frame,const vector<Mat>& out);
+        int postprocess(Mat& frame,const vector<Mat>& outs);
         void drawPred(int classId,float conf,int left,int top,int right,int bottom,Mat& frame);
-        vector<String> getOutputNames(const Net& net);
-        void yolovInit(tring vocname,string modelConfiguration,string modelWeight);
+        vector<String> getOutputsNames(const Net& net);
+        void yolovInit(string vocname,string modelConfiguration,string modelWeight);
         void yolovplay();
         int yolovplayOnce(Mat inputFrame);
 };
