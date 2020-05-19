@@ -487,7 +487,6 @@ typedef struct _PLAYM4_ADDITION_INFO_     //������Ϣ�ṹ
 } PLAYM4_ADDITION_INFO;
 #endif
 
-//dwGroupIndex ��Լ��ȡֵ0~3����һ�汾ȡ��ͬ��ֻ��ͬ��closestream����
 PLAYM4_API BOOL __stdcall PlayM4_SetSycGroup(LONG nPort, DWORD dwGroupIndex);
 //�ݲ�ʵ�ִ˺�����ͬ�������õ���ʼʱ�䲻һ�£�����С��ʱ����Ϊ������㣬ͬһ���ֻ��һ·
 PLAYM4_API BOOL __stdcall PlayM4_SetSycStartTime(LONG nPort, PLAYM4_SYSTEM_TIME *pstSystemTime);

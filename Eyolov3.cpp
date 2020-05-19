@@ -55,7 +55,7 @@ void Eyolo::yolovplay(){
         this->postprocess(frame,outs);
         Mat detectedFrame;
         frame.convertTo(detectedFrame,CV_8U);
-        inshow(kWinName,frame);
+        imshow(kWinName,frame);
     }
     cap.release();
 }
@@ -126,7 +126,7 @@ void Eyolo::drawPred(int classId,float conf,int left,int top,int right,int botto
     if(!this->classes.empty())
     {
         CV_Assert(classId <(int)this->classes.size());
-        label=class[classId]+":"+label;
+        label=classes[classId]+":"+label;
     }
     //Display the label at the top of the bounding box
     int baseLine;
@@ -148,8 +148,8 @@ vector<String> Eyolo::getOutputsNames(const Net& net)
         vector<String> layersNames=net.getLayerNames();
         // Get the names of the output layers in names
         names.resize(outLayers.size());
-        for(size_t i=0;i<outLayers.size();++i);
-        names[i]=layersNames[outLayers[i]-1];
+        for(size_t i=0;i<outLayers.size();++i)
+            names[i]=layersNames[outLayers[i]-1];
     }
     return names;
 }

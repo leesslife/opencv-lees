@@ -1,0 +1,22 @@
+[2020-05-18 21:58:00.632][INF] The COM:HCCoreBase ver is 1.0.0.3, 2019_10_29. Async:1.
+[2020-05-18 21:58:00.632][INF] The COM:Core ver is 6.1.4.17, 2020_03_31. Async:1.
+[2020-05-18 21:58:00.632][INF] This HCNetSDK ver is 6.1.4.17 Ver 2020_03_31.
+[2020-05-18 21:58:00.632][INF] Login dev 192.168.1.105:80.
+[2020-05-18 21:58:00.633][INF] Private connect 192.168.1.105:80 sock=63 this=0xcc118ed4 cmd=0x10000 port=46732
+[2020-05-18 21:58:00.633][INF] LogonDev1 in[192.168.1.105:80]
+[2020-05-18 21:58:00.634][INF] CCoreGlobalCtrlBase::LoadDSo, HPR_LoadDSo Succ, Path[libcrypto.so], hHandleRet[-871223840]
+[2020-05-18 21:58:00.635][INF] CCoreGlobalCtrlBase::LoadDSo, HPR_LoadDSo Succ, Path[libssl.so], hHandleRet[-871222288]
+[2020-05-18 21:58:00.635][INF] SSLTRANSAPI::LoadAPI, libeay, Load Real Path[/home/lees/M_Paper/opencvyolov3/opencv-lees/HCNET/lib/libcrypto.so]
+[2020-05-18 21:58:00.635][INF] SSLTRANSAPI::LoadAPI, libssl, Load Real Path[/home/lees/M_Paper/opencvyolov3/opencv-lees/HCNET/lib/libssl.so]
+[2020-05-18 21:58:00.635][ERR] SSLTRANSAPI::IsAllAPILoaded, OpenSSL_version Unload
+[2020-05-18 21:58:00.635][ERR] OpenSSL, Not All Function Loaded!
+[2020-05-18 21:58:00.636][INF] SSLTRANSAPI::PrintVersion, SSLeay_version info [OpenSSL 1.0.2t  10 Sep 2019]
+[2020-05-18 21:58:00.636][INF] CSSLTrans::SSLCtxInit, dwSSLVersion[0], m_fnClientMethodV23
+[2020-05-18 21:58:00.636][ERR]  GetCAPath, Failed, Invalid pPath
+[2020-05-18 21:58:00.650][ERR]  GetCAPath, Failed, Invalid pPath
+[2020-05-18 21:58:05.783][ERR] LogonDev1[192.168.1.105]
+[2020-05-18 21:58:05.783][ERR] [192.168.1.105:80]PRO_LoginHikDevice fail[err=10].
+[2020-05-18 21:58:05.783][ERR] CMemberMgrBase::AllocIndex2, MemberStart Failed, iIndex[0]
+[2020-05-18 21:58:06.132][ERR] CSSLTrans::UnloadSSLLib() SSLLibUnlock s_hEAYCom failed3 [syserr: 115]
+[2020-05-18 21:58:06.132][ERR] CSSLTrans::UnloadSSLLib() SSLLibUnlock failed4 [syserr: 115]
+[2020-05-18 21:58:06.132][ERR] CSSLTrans::UnloadSSLLib failed
